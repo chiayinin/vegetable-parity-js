@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蔬菜比價網</title>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <!-- google icon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- css -->
+  <link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+<main class="bg py-4">
+  <div class="container">
+    <!-- logo -->
+    <figure class="mb-5">
+      <img src="./images/logo.jpg" alt="logo" class="img-fluid logo">
+      <img src="./images/logo-sm.jpg" alt="logo" class="img-fluid logo-sm">
+    </figure>
+    <!-- content -->
+    <div class="row bg-white p-5 content">
+      <!-- tag -->
+      <div class="d-flex justify-content-center algin-content-center mb-4">
+        <button type="button" class="btn btn-warning border border-dark border-2 rounded px-5 py-2 fw-bold">蔬果</button>
+        <button type="button" class="btn btn-warning border border-dark border-2 rounded px-5 py-2 fw-bold mx-2">水果</button>
+        <button type="button" class="btn btn-warning border border-dark border-2 rounded px-5 py-2 fw-bold">花卉</button>
+      </div>
+      <!-- 搜尋 -->
+      <form class="d-flex justify-content-center algin-content-center text-white mb-4">
+        <label for="search" class=" fw-bold d-flex align-items-center bg-success border border-success border-2 rounded ps-4 me-2">
+          作物名稱
+          <input class="form-control ms-4 pe-5 w-auto border-0" type="search" id="search" placeholder="請輸入作物名稱" aria-label="Search">
+        </label>
+        <button class="btn btn-success fw-bold px-5" type="submit">搜尋
+        </button>
+      </form>
+      <!-- 篩選 -->
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <p class="fw-bold m-0">查看「椰子」的比價結果</p>
+        <div class="dropdown">
+          <button class="btn btn-white border-dark  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            排序篩選
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">依上價排序</a></li>
+            <li><a class="dropdown-item" href="#">依中價排序</a></li>
+            <li><a class="dropdown-item" href="#">依下價排序</a></li>
+            <li><a class="dropdown-item" href="#">依平均價排序</a></li>
+            <li><a class="dropdown-item" href="#">依交易價排序</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 表格 -->
+      <div class="table-responsive">
+        <table class="table table-hover fw-bold">
+          <thead>
+            <tr>
+              <th scope="col">作物</th>
+              <th scope="col">市場</th>
+              <th scope="col">上價</th>
+              <th scope="col">中價</th>
+              <th scope="col">下價</th>
+              <th scope="col">平均價</th>
+              <th scope="col">交易量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <th colspan="7" class="py-4">請輸入並搜尋想比價的作物名稱^＿^</th>
+            </tr>
+          </tbody>
+          <!-- <tbody>
+            <tr class="text-center">
+              <th colspan="7" class="py-4">資料載入中...</th>
+            </tr>
+          </tbody> -->
+          <!-- <tbody>
+            <tr class="text-center">
+              <th colspan="7" class="py-4">查詢不到當日的交易資訊QQ</th>
+            </tr>
+          </tbody> -->
+          <!-- <tbody>
+            <tr">
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+            </tr>
+          </tbody>
+        </table> -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+<!-- js -->
+<script src="./js/all.js"></script>
+</body>
+</html>

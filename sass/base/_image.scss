@@ -1,0 +1,26 @@
+.bg {
+  width: 100%;
+  background-image: url('../../../images/bg-sm.jpg');
+  background-size: cover;
+  background-position: center center;
+
+  @include desktop {
+    background-image: url('../../../images/bg.jpg');
+  }
+}
+
+.logo {
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+}
+
+.logo-sm {
+  display: block;
+
+  @include desktop {
+    display: none;
+  }
+}
