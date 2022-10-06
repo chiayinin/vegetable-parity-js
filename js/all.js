@@ -1,8 +1,8 @@
 const url = "https://hexschool.github.io/js-filter-data/data.json";
 const req = new XMLHttpRequest();
-const method = 'get';
+const method = 'GET';
 let data;
-let showData;
+let showData = [];
 
 // table
 const filterTable = document.querySelector('.filter-table tbody');
@@ -11,7 +11,19 @@ const searchBtn = document.querySelector('.search-btn');
 // 搜尋提示
 const searchMessage = document.querySelector('.search-message');
 // 搜尋輸入欄
-const searchInput = document.querySelector('.search-input');
+let searchInput = document.querySelector('.search-input');
+
+
+// 取得資料
+axios.get(url)
+.then( response => {
+  data = response.data.filter(item => item.作物名稱);
+  console.log(response);
+})
+.catch( error => {
+  console.dir(error);
+});
+console.log(data);
 
 // 搜尋行為
 searchBtn.addEventListener('click', search);
@@ -20,15 +32,6 @@ searchInput.addEventListener('keyup', e => {
     search(e);
   };
 });
-
-// 取得資料
-function getData(){
-  req.open(method, url);
-  req.onload = function(res){
-    data = res.data.filter(item => item.作物名稱)
-  };
-  req.send();
-};
 
 // 渲染畫面
 function render(data){
@@ -46,7 +49,9 @@ function render(data){
     str += content;
   });
   filterTable.innerHTML = str;
+  console.log(data);
 }
+// render()
 
 // 渲染 table message
 function tableMessage(message) {
@@ -59,16 +64,17 @@ function tableMessage(message) {
 }
 
 // 搜尋
-function search(e){
+function search(){
   searchInput = searchInput.value.replace(/\s+/g, '');
-  data = data.filter( item => item.作物名稱.match(searchInput));
+  console.log(data);
+  showData = data.filter( item => item.作物名稱.match(searchInput));
 
   if(searchInput !== ''){
     searchMessage.innerHTML = `查看「${searchInput.value}」的比價結果`;
 
-    if(data.length !== 0){
+    if(showData.length !== 0){
       tableMessage("資料載入中...");
-      render(data);
+      render(showData);
     }else{
       tableMessage("查詢不到當日的交易資訊QQ");
     };
@@ -80,3 +86,4 @@ function search(e){
   // 清空欄位
   searchInput.value = '';
 }
+search()
