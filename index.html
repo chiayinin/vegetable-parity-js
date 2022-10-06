@@ -32,14 +32,14 @@
       <form class="d-flex justify-content-center algin-content-center text-white mb-4">
         <label for="search" class=" fw-bold d-flex align-items-center bg-success border border-success border-2 rounded ps-4 me-2">
           作物名稱
-          <input class="form-control ms-4 pe-5 w-auto border-0" type="search" id="search" placeholder="請輸入作物名稱" aria-label="Search">
+          <input class="form-control ms-4 pe-5 w-auto border-0 search-input" type="search" id="search" placeholder="請輸入作物名稱" aria-label="Search">
         </label>
-        <button class="btn btn-success fw-bold px-5" type="submit">搜尋
+        <button class="btn btn-success fw-bold px-5 search-btn" type="submit">搜尋
         </button>
       </form>
       <!-- 篩選 -->
       <div class="d-flex align-items-center justify-content-between mb-4">
-        <p class="fw-bold m-0">查看「椰子」的比價結果</p>
+        <p class="fw-bold m-0 search-message"></p>
         <div class="dropdown">
           <button class="btn btn-white border-dark  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             排序篩選
@@ -54,7 +54,7 @@
         </div>
       </div>
       <!-- 表格 -->
-      <div class="table-responsive">
+      <div class="table-responsive filter-table">
         <table class="table table-hover fw-bold">
           <thead>
             <tr>
