@@ -23,13 +23,12 @@ axios.get(url)
 .catch( error => {
   console.dir(error);
 });
-console.log(data);
 
 // 搜尋行為
 searchBtn.addEventListener('click', search);
-searchInput.addEventListener('keyup', e => {
-  if(e.key == 'Enter'){
-    search(e);
+searchInput.addEventListener('keyup', event => {
+  if(event.key == 'Enter'){
+    search(event);
   };
 });
 
@@ -64,7 +63,7 @@ function tableMessage(message) {
 }
 
 // 搜尋
-function search(){
+function search(event){
   searchInput = searchInput.value.replace(/\s+/g, '');
   console.log(data);
   showData = data.filter( item => item.作物名稱.match(searchInput));
@@ -85,5 +84,5 @@ function search(){
 
   // 清空欄位
   searchInput.value = '';
+  event.preventDefault();
 }
-search()
