@@ -1,8 +1,8 @@
 const url = "https://hexschool.github.io/js-filter-data/data.json";
-const req = new XMLHttpRequest();
 const method = 'GET';
 let data;
 let showData = [];
+let category = '';
 
 // table
 const filterTable = document.querySelector('.filter-table tbody');
@@ -12,6 +12,9 @@ const searchBtn = document.querySelector('.search-btn');
 const searchMessage = document.querySelector('.search-message');
 // 搜尋輸入欄
 let searchInput = document.querySelector('.search-input');
+// tag button
+let tagGroup = document.querySelector('.tagGroup')
+
 
 
 // 取得資料
@@ -50,7 +53,6 @@ function render(data){
   filterTable.innerHTML = str;
   console.log(data);
 }
-// render()
 
 // 渲染 table message
 function tableMessage(message) {
@@ -65,11 +67,11 @@ function tableMessage(message) {
 // 搜尋
 function search(event){
   searchInput = searchInput.value.replace(/\s+/g, '');
-  console.log(data);
+  // console.log(data);
   showData = data.filter( item => item.作物名稱.match(searchInput));
 
   if(searchInput !== ''){
-    searchMessage.innerHTML = `查看「${searchInput.value}」的比價結果`;
+    searchMessage.innerHTML = `查看「${searchInput}」的比價結果`;
 
     if(showData.length !== 0){
       tableMessage("資料載入中...");
@@ -85,4 +87,22 @@ function search(event){
   // 清空欄位
   searchInput.value = '';
   event.preventDefault();
+}
+
+// tag
+// 種類代碼: 'N04', 蔬菜
+// 種類代碼: 'N05', 水果
+// 種類代碼: 'N06', 花卉
+tagGroup.addEventListener("click",tagGet)
+function tagGet(e) {
+
+  if(e.target.nodeName == "BUTTON"){
+    category = e.target.dataset.category;
+    showData = data.filter( item => item.種類代碼 == category);
+    tableMessage("資料載入中...");
+    searchMessage.innerHTML = `查看「${e.target.value}」的比價結果`;
+    return render(showData);
+  }else{
+    return;
+  }
 }
