@@ -57,7 +57,6 @@ function render(data){
     str += content;
   });
   filterTable.innerHTML = str;
-  console.log(data);
 }
 
 // 渲染 table message
@@ -72,12 +71,11 @@ function tableMessage(message) {
 
 // 搜尋
 function search(event){
-  searchInput = searchInput.value.replace(/\s+/g, '');
-  // console.log(data);
-  showData = data.filter( item => item.作物名稱.match(searchInput));
+  inputValue = searchInput.value.replace(/\s+/g, '');
+  showData = data.filter( item => item.作物名稱.match(inputValue));
 
-  if(searchInput !== ''){
-    searchMessage.innerHTML = `查看「${searchInput}」的比價結果`;
+  if(inputValue !== ''){
+    searchMessage.innerHTML = `查看「${inputValue}」的比價結果`;
 
     if(showData.length !== 0){
       tableMessage("資料載入中...");
@@ -88,6 +86,8 @@ function search(event){
 
   }else{
     alert("輸入欄位不得為空。");
+    tableMessage("請輸入並搜尋想比價的作物名稱^＿^");
+    searchMessage.innerHTML = '';
   };
 
   // 清空欄位
