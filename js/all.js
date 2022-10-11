@@ -14,6 +14,8 @@ const searchMessage = document.querySelector('.search-message');
 let searchInput = document.querySelector('.search-input');
 // tag button
 let tagGroup = document.querySelector('.tagGroup')
+// 下拉篩選選單
+let select = document.querySelector('.sortFilter')
 
 
 
@@ -34,6 +36,10 @@ searchInput.addEventListener('keyup', event => {
     search(event);
   };
 });
+// tag 行為
+tagGroup.addEventListener("click",tagGet);
+// 下拉篩選行為
+select.addEventListener('change', sortFilter);
 
 // 渲染畫面
 function render(data){
@@ -93,16 +99,44 @@ function search(event){
 // 種類代碼: 'N04', 蔬菜
 // 種類代碼: 'N05', 水果
 // 種類代碼: 'N06', 花卉
-tagGroup.addEventListener("click",tagGet)
 function tagGet(e) {
-
   if(e.target.nodeName == "BUTTON"){
     category = e.target.dataset.category;
     showData = data.filter( item => item.種類代碼 == category);
-    tableMessage("資料載入中...");
     searchMessage.innerHTML = `查看「${e.target.value}」的比價結果`;
+    tableMessage("資料載入中...");
     return render(showData);
   }else{
     return;
   }
+}
+
+// 下拉選單
+function sortFilter(e) {
+  if(showData.length == 0){
+    alert("請先輸入蔬果類別再做排序！");
+    select.value = "排序篩選";
+  }
+
+  switch (e.target.value) {
+    case "上價":
+      sortValue("上價");
+      break;
+    case "中價":
+      sortValue("中價");
+      break;
+    case "下價":
+      sortValue("下價");
+      break;
+    case "平均價":
+      sortValue("平均價");
+      break;
+    case "交易量":
+      sortValue("交易量");
+      break;
+  }
+}
+function sortValue(value) {
+  showData.sort((a,b)=> b[value] - a[value]);
+  render(showData);
 }

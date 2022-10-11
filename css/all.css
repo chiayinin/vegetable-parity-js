@@ -1,12 +1,14 @@
 .bg {
   width: 100%;
-  background-image: url("../../../images/bg-sm.jpg");
+  background-image: url("../images/bg-sm.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 @media screen and (min-width: 376px) {
   .bg {
-    background-image: url("../../../images/bg.jpg");
+    background-image: url("../images/bg.jpg");
   }
 }
 
