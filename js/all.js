@@ -75,6 +75,10 @@ function search(event){
   inputValue = searchInput.value.replace(/\s+/g, '');
   showData = data.filter( item => item.作物名稱.match(inputValue));
 
+  tagButton.forEach(item => {
+    item.classList.remove('btn-active')
+  });
+
   if(inputValue !== ''){
     searchMessage.innerHTML = `查看「${inputValue}」的比價結果`;
 
@@ -106,9 +110,6 @@ function tagGet(e) {
       item.classList.remove('btn-active')
       e.target.classList.add('btn-active')
     })
-    // e.target.classList.add('active');
-
-
 
     category = e.target.dataset.category;
     showData = data.filter( item => item.種類代碼 == category);
