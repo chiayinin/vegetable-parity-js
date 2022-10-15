@@ -12,8 +12,9 @@ const searchBtn = document.querySelector('.search-btn');
 const searchMessage = document.querySelector('.search-message');
 // 搜尋輸入欄
 let searchInput = document.querySelector('.search-input');
-// tag button
+// tag button group
 let tagGroup = document.querySelector('.tagGroup')
+let tagButton = document.querySelectorAll('.tagGroup button')
 // 下拉篩選選單
 let select = document.querySelector('.sortFilter')
 
@@ -101,6 +102,14 @@ function search(event){
 // 種類代碼: 'N06', 花卉
 function tagGet(e) {
   if(e.target.nodeName == "BUTTON"){
+    tagButton.forEach(item => {
+      item.classList.remove('btn-active')
+      e.target.classList.add('btn-active')
+    })
+    // e.target.classList.add('active');
+
+
+
     category = e.target.dataset.category;
     showData = data.filter( item => item.種類代碼 == category);
     searchMessage.innerHTML = `查看「${e.target.value}」的比價結果`;
